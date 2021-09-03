@@ -1,11 +1,11 @@
-## Distribuci√≥n de los programas sociales de acuerdo a cuadrantes de bienestar de Coneval en Colima.
+## Distribuci√É¬≥n de los programas sociales de acuerdo a cuadrantes de bienestar de Coneval en Colima.
 ## Por Zatara
-## Nota: Si el script tiene problemas al momento de reproducirse, es probable que el error se encuentre en las lÌneas 162, 182, 189, 210, 234 y 241.
-## El ordenador donde fue desarrollado el scrip detecta la variable folioviv de las ENIGH como Ô..folioviv. En caso de error, se sugiere hacer modificaciones
-## en las lÌneas seÒaladas para utilizar el nombre correcto de la variable.
+## Nota: Si el script tiene problemas al momento de reproducirse, es probable que el error se encuentre en las l√≠neas 162, 182, 189, 210, 234 y 241.
+## El ordenador donde fue desarrollado el scrip detecta la variable folioviv de las ENIGH como √Ø..folioviv. En caso de error, se sugiere hacer modificaciones
+## en las l√≠neas se√±aladas para utilizar el nombre correcto de la variable.
 
 ################### Librer?as de trabajo ###############
-## Funci√≥n para descargar paquetes en autom?tico
+## Funci√É¬≥n para descargar paquetes en autom?tico
 foo <- function(x){
   for( i in x ){
     #  require returns TRUE invisibly if it was able to load package
@@ -87,7 +87,7 @@ ingresos20<-read.csv(fpath)
 
 
 ## Descargamos datos de CONEVAL
-## Bases de datos con medici√≥n de pobreza por personas
+## Bases de datos con medici√É¬≥n de pobreza por personas
 ## 2018
 url<-"https://www.coneval.org.mx/Medicion/MP/Documents/Programas_calculo_pobreza_MMP_18/R_MMP_2018.zip"
 
@@ -152,7 +152,7 @@ rm(foo,
 ## P038 - Becas de gobierno
 ## P042 - PROSPERA (OPORTUNIDADES / PROCAMPO)
 ## P043 - PROCAMPO
-## P044 - 65 y m·s
+## P044 - 65 y m√°s
 ## P045 - Otros programas para adultos mayores
 ## P046 - Tarjeta sin hambre
 ## P047 - Empleo temporal
@@ -161,7 +161,7 @@ rm(foo,
 transfer_gub_18 <- ingresos18 %>%
   ## seleccionamos variables relevantes
   select(
-    Ô..folioviv, ## Llave
+    √Ø..folioviv, ## Llave
     foliohog, ## Llave
     numren, ## LLave
     clave, ## Clave de ingresos
@@ -181,35 +181,35 @@ transfer_gub_18 <- ingresos18 %>%
   ) %>% 
   ## Calculamos ingresos trimestrales de los hogares por todas transferencias de gobierno
   ## Primero agrupamos por folio de vivienda, folio de hogar y clave
-  group_by(Ô..folioviv,
+  group_by(√Ø..folioviv,
             foliohog,
             numren) %>% 
   ## sumamos las transferencias trimestrales al hogar de distintos programas de gobierno
   summarise(prog_sociales = sum(ing_tri)) %>% 
   ungroup() %>% 
   ## Renombramos la variable folioviv con problema para unirla a la base de datos de coneval
-  rename(folioviv = Ô..folioviv)
+  rename(folioviv = √Ø..folioviv)
 
 ## 2020
 ## De acuerdo al descriptor de variables de la ENIGH, las claves que reflejan transferencias gubernamentales son:
 ## Filtramos los ingresos trimestrales para que nos reflejen las transferencias gubernamentales
 ## Claves (extraidas de https://www.inegi.org.mx/contenidos/productos/prod_serv/contenidos/espanol/bvinegi/productos/nueva_estruc/889463901242.pdf, pp 234-235)
 ## P038 - Becas de gobierno
-## P043 - Beneficio de PROCAMPO / ProAgro Productivo / ProducciÛn para el Bienestar
+## P043 - Beneficio de PROCAMPO / ProAgro Productivo / Producci√≥n para el Bienestar
 ## P045 - Beneficio de otros programas para adultos mayores
 ## P048 - Beneficios de otros programas sociales
-## P101 - beca Bienestar para las Familias de EducaciÛn B·sica (PROSPERA)
-## P102 - Beca Benito Ju·rez para JÛvenes de EducaciÛn Media Superior
-## P103 - Beca JÛvenes Escribiendo el Futuro de EducaciÛn Superior
+## P101 - beca Bienestar para las Familias de Educaci√≥n B√°sica (PROSPERA)
+## P102 - Beca Benito Ju√°rez para J√≥venes de Educaci√≥n Media Superior
+## P103 - Beca J√≥venes Escribiendo el Futuro de Educaci√≥n Superior
 ## P104 - Programa para el Bienestar de las Personas Adultas Mayores
-## P105 - PensiÛn para el Bienestar de Personas con Discapacidad
+## P105 - Pensi√≥n para el Bienestar de Personas con Discapacidad
 ## P106 - Apoyo para el Bienestar de los Hijos de Madres Trabajadoras
 ## P107 - Seguro de vida para Jefas de Familia
-## P108 - Programa JÛvenes Construyendo el Futuro
+## P108 - Programa J√≥venes Construyendo el Futuro
 transfer_gub_20 <- ingresos20 %>%
   ## seleccionamos variables relevantes
   select(
-    Ô..folioviv, ## Llave
+    √Ø..folioviv, ## Llave
     foliohog, ## Llave
     numren, ## LLave
     clave, ## Clave de ingresos
@@ -233,14 +233,14 @@ transfer_gub_20 <- ingresos20 %>%
   ) %>%  
   ## Calculamos ingresos trimestrales de los hogares por todas transferencias de gobierno
   ## Primero agrupamos por folio de vivienda, folio de hogar y clave
-  group_by(Ô..folioviv,
+  group_by(√Ø..folioviv,
             foliohog,
             numren) %>% 
   ## sumamos las transferencias trimestrales al hogar de distintos programas de gobierno
   summarise(prog_sociales = sum(ing_tri)) %>% 
   ungroup() %>% 
   ## Renombramos la variable folioviv con problema para unirla a la base de datos de coneval
-  rename(folioviv = Ô..folioviv)
+  rename(folioviv = √Ø..folioviv)
 
 rm(ingresos18,
    ingresos20)
@@ -255,7 +255,7 @@ transfer_gub_pobreza_18 <-full_join(transfer_gub_18,
   ## Convertimos valores NA en 0 (asumimos que si no reportaron ingresos por el programa es porque no reciben ingresos por el programa)
   mutate(prog_sociales = replace_na(prog_sociales,0)
   ) %>% 
-  ## Seleccionamos variables de interÈs
+  ## Seleccionamos variables de inter√©s
   select(
     folioviv,
     foliohog,
@@ -286,7 +286,7 @@ transfer_gub_pobreza_20 <-full_join(transfer_gub_20,
   ## Convertimos valores NA en 0 (asumimos que si no reportaron ingresos por el programa es porque no reciben ingresos por el programa)
   mutate(prog_sociales = replace_na(prog_sociales,0)
   ) %>% 
-  ## Seleccionamos variables de interÈs
+  ## Seleccionamos variables de inter√©s
   select(
     folioviv,
     foliohog,
@@ -318,7 +318,7 @@ rm(pobreza_18,
 transfer_gub_pobreza_18_colima <- transfer_gub_pobreza_18 %>% 
   filter(ent == 6) %>% 
   ## Creamos una variable con las transferencias de 2018 actualizadas al valor de 2020
-  ## Se utilizar· como IPC 2018 el de Julio de 2018 e IPC 2020 el de Julio de 2020. Valores consultados en https://www.elcontribuyente.mx/inpc/
+  ## Se utilizar√° como IPC 2018 el de Julio de 2018 e IPC 2020 el de Julio de 2020. Valores consultados en https://www.elcontribuyente.mx/inpc/
   mutate(prog_sociales_actualizados = prog_sociales * (107.444 / 99.909099104514 ) )
 ## 20
 transfer_gub_pobreza_20_colima <- transfer_gub_pobreza_20 %>% 
@@ -328,7 +328,7 @@ rm(transfer_gub_pobreza_18,
    transfer_gub_pobreza_20)
 
 ################ Estimaciones ####################
-## Generamos diseÒos muestrales para calcular estimaciones
+## Generamos dise√±os muestrales para calcular estimaciones
 ## 2018
 design18 <- transfer_gub_pobreza_18_colima %>% 
   as_survey_design(ids=upm,
@@ -343,7 +343,7 @@ design20 <- transfer_gub_pobreza_20_colima %>%
 rm(transfer_gub_pobreza_18_colima,
    transfer_gub_pobreza_20_colima)
 
-## Porcentaje de poblaciÛn que recibe programas sociales de acuerdo a cuadrantes de vulnerabilidad de Coneval
+## Porcentaje de poblaci√≥n que recibe programas sociales de acuerdo a cuadrantes de vulnerabilidad de Coneval
 ## 2018
 ## Personas que reciben programas sociales
 prog_soc_est_18 <- design18 %>% 
@@ -355,7 +355,7 @@ prog_soc_est_18 <- design18 %>%
   mutate(recibe_pg_cv=
            recibe_pg_cv*100
   ) %>% 
-  mutate(aÒo = 2018)
+  mutate(a√±o = 2018)
 
 personas_18 <- design18 %>% 
   group_by(cuadrantes) %>% 
@@ -365,29 +365,30 @@ personas_18 <- design18 %>%
   mutate(personas_cv=
            personas_cv*100
   ) %>% 
-  mutate(aÒo = 2018)
+  mutate(a√±o = 2018)
 
 prog_soc_est_18_pct <- merge(prog_soc_est_18,
                              personas_18,
                              by = c("cuadrantes",
-                                    "aÒo")) %>% 
+                                    "a√±o")) %>% 
   mutate(pct_recibe_pg = recibe_pg / personas * 100,
          pct_recibe_pg_low = recibe_pg_low / personas * 100,
          pct_recibe_pg_upp = recibe_pg_upp / personas * 100,
          pct_recibe_pg_cv = recibe_pg_cv,
+## Etiquetas salen de la tabla descriptora de variables de Coneval. Disponible en el archivo zip de donde se obtuvieron los datos de Coneval
          cuadrantes = case_when(cuadrantes == 1 ~ "pobres",
                    cuadrantes == 2 ~ "vulnerables por carencias",
                    cuadrantes == 3 ~ "vulnerables por ingresos",
                    cuadrantes == 4 ~ "no pobre y no vulnerable")
          ) %>% 
-  select(aÒo,
+  select(a√±o,
          cuadrantes,
          pct_recibe_pg,
          pct_recibe_pg_cv,
          pct_recibe_pg_low,
          pct_recibe_pg_upp)
 
-rm(prog_soc_est_18,
+rm(
    personas_18)
 
 ## 2020
@@ -401,7 +402,7 @@ prog_soc_est_20 <- design20 %>%
   mutate(recibe_pg_cv=
            recibe_pg_cv*100
   ) %>% 
-  mutate(aÒo = 2020)
+  mutate(a√±o = 2020)
 
 personas_20 <- design20 %>% 
   group_by(cuadrantes) %>% 
@@ -411,29 +412,30 @@ personas_20 <- design20 %>%
   mutate(personas_cv=
            personas_cv*100
   ) %>% 
-  mutate(aÒo = 2020)
+  mutate(a√±o = 2020)
 
 prog_soc_est_20_pct <- merge(prog_soc_est_20,
                              personas_20,
                              by = c("cuadrantes",
-                                    "aÒo")) %>% 
+                                    "a√±o")) %>% 
   mutate(pct_recibe_pg = recibe_pg / personas * 100,
          pct_recibe_pg_low = recibe_pg_low / personas * 100,
          pct_recibe_pg_upp = recibe_pg_upp / personas * 100,
          pct_recibe_pg_cv = recibe_pg_cv,
+## Etiquetas salen de la tabla descriptora de variables de Coneval. Disponible en el archivo zip de donde se obtuvieron los datos de Coneval
          cuadrantes =case_when(cuadrantes == 1 ~ "pobres",
                    cuadrantes == 2 ~ "vulnerables por carencias",
                    cuadrantes == 3 ~ "vulnerables por ingresos",
                    cuadrantes == 4 ~ "no pobre y no vulnerable")
   ) %>% 
-  select(aÒo,
+  select(a√±o,
          cuadrantes,
          pct_recibe_pg,
          pct_recibe_pg_cv,
          pct_recibe_pg_low,
          pct_recibe_pg_upp)
 
-rm(prog_soc_est_20,
+rm(
    personas_20)
 
 prog_soc_est_pct <- bind_rows(prog_soc_est_18_pct,
@@ -441,6 +443,59 @@ prog_soc_est_pct <- bind_rows(prog_soc_est_18_pct,
 
 rm(prog_soc_est_18_pct,
    prog_soc_est_20_pct)
+
+## Porcentaje de beneficiarios de acuerdo a los cuadrantes de bienestar
+## Llamamos las bases de estimados 18 y 20 de beneficiarios de programas sociales, creamos un vector de beneficiarios por a√±o y hacemos la correspondiente divisi√≥n
+## Vectores de beneficiarios
+vector_pob_18 <- as.vector(prog_soc_est_18 %>% summarise(bene_pg = sum(recibe_pg)))
+vector_pob_20 <- as.vector(prog_soc_est_20 %>% summarise(bene_pg = sum(recibe_pg)))
+
+## 2018
+pct_beneficiarios_cuadrantes_18 <- prog_soc_est_18 %>% 
+  mutate(pct_bene = recibe_pg / vector_pob_18$bene_pg * 100,
+         pct_bene_cv = recibe_pg_cv,
+         pct_bene_low = recibe_pg_low /vector_pob_18$bene_pg * 100,
+         pct_bene_upp = recibe_pg_upp / vector_pob_18$bene_pg * 100,
+         cuadrantes =case_when(cuadrantes == 1 ~ "pobres",
+                               cuadrantes == 2 ~ "vulnerables por carencias",
+                               cuadrantes == 3 ~ "vulnerables por ingresos",
+                               cuadrantes == 4 ~ "no pobre y no vulnerable")
+         )%>% 
+  select(a√±o,
+         cuadrantes,
+         pct_bene,
+         pct_bene_cv,
+         pct_bene_low,
+         pct_bene_upp)
+
+## 2020
+pct_beneficiarios_cuadrantes_20 <- prog_soc_est_20 %>% 
+  mutate(pct_bene = recibe_pg / vector_pob_20$bene_pg * 100,
+         pct_bene_cv = recibe_pg_cv,
+         pct_bene_low = recibe_pg_low /vector_pob_20$bene_pg * 100,
+         pct_bene_upp = recibe_pg_upp / vector_pob_20$bene_pg * 100,
+         cuadrantes =case_when(cuadrantes == 1 ~ "pobres",
+                               cuadrantes == 2 ~ "vulnerables por carencias",
+                               cuadrantes == 3 ~ "vulnerables por ingresos",
+                               cuadrantes == 4 ~ "no pobre y no vulnerable")
+  )%>% 
+  select(a√±o,
+         cuadrantes,
+         pct_bene,
+         pct_bene_cv,
+         pct_bene_low,
+         pct_bene_upp)
+
+pct_beneficiarios_cuadrantes <- bind_rows(pct_beneficiarios_cuadrantes_18,
+                                          pct_beneficiarios_cuadrantes_20)
+
+rm(prog_soc_est_18,
+   prog_soc_est_20,
+   vector_pob_18,
+   vector_pob_20,
+   pct_beneficiarios_cuadrantes_18,
+   pct_beneficiarios_cuadrantes_20)  
+
 ## Transferencia media a beneficiarios de los cuadrantes de bienestar
 ## 2018
 ## Para poder comparar la transferencia media de 2018 con 2020, estimaremos la transferencia media con valor actualizado a Julio de 2020
@@ -453,7 +508,7 @@ mean_transfer_pg_18 <- design18 %>%
   mutate(transferencia_media_cv=
            transferencia_media_cv*100
   ) %>% 
-  mutate(aÒo = 2018)
+  mutate(a√±o = 2018)
 
 ## 2020
 mean_transfer_pg_20 <- design20 %>% 
@@ -465,28 +520,30 @@ mean_transfer_pg_20 <- design20 %>%
   mutate(transferencia_media_cv=
            transferencia_media_cv*100
   ) %>% 
-  mutate(aÒo = 2020)
+  mutate(a√±o = 2020)
 
-## Unimos la informaciÛn
+## Unimos la informaci√≥n
 mean_trasfer <- bind_rows(mean_transfer_pg_18,
                           mean_transfer_pg_20) %>% 
+## Etiquetas salen de la tabla descriptora de variables de Coneval. Disponible en el archivo zip de donde se obtuvieron los datos de Coneval
   mutate(cuadrantes = case_when(cuadrantes == 1 ~ "pobres",
                                 cuadrantes == 2 ~ "vulnerables por carencias",
                                 cuadrantes == 3 ~ "vulnerables por ingresos",
                                 cuadrantes == 4 ~ "no pobre y no vulnerable")
   ) %>% 
-  select(aÒo,
+  select(a√±o,
          cuadrantes,
          transferencia_media,
          transferencia_media_cv,
          transferencia_media_low,
          transferencia_media_upp)
+
 rm(mean_transfer_pg_18,
    mean_transfer_pg_20)
 
 ############ Visualizaciones de datos ################
 
-## VisualizaciÛn del porcentaje de personas por cuadrante de bienestar que reciben un programa social en Colima
+## Visualizaci√≥n del porcentaje de personas en situaci√≥n de pobreza, vulnerabilidad y no pobreza ni vulnerabilidad qe reciben programas sociales
 prog_soc_est_pct %>% 
   mutate(cuadrantes_clave = as.factor(c(1,2,3,4,
                                         1,2,3,4)
@@ -494,12 +551,12 @@ prog_soc_est_pct %>%
   ) %>% 
   ggplot(aes(x = cuadrantes_clave,
              y = pct_recibe_pg,
-             fill = as.factor(aÒo)
+             fill = as.factor(a√±o)
   )
   ) +
   theme_bw()+
   theme(text = element_text(size=15), ## Ajustamos la letra del texto a 11 puntos
-        plot.title = element_text(hjust = 0.5), ## Alineamos el tÌtulo al centro
+        plot.title = element_text(hjust = 0.5), ## Alineamos el t√≠tulo al centro
         legend.position = c(0.9,
                             0.85),
         axis.title.x =  element_blank()
@@ -507,23 +564,68 @@ prog_soc_est_pct %>%
   geom_bar(stat = "identity",
            position=position_dodge()
   ) +
-  scale_fill_brewer(name = "AÒo",
+  scale_fill_brewer(name = "A√±o",
                     palette="Paired")+
   scale_x_discrete(breaks = c(1:4),
                    labels = c("Pobres",
                               "Vulnerables por carencias",
                               "Vulnerables por ingresos",
                               "No pobres y no vulnerables"))+
-  labs(title = "øPrimero los pobres? Porcentaje de personas en situaciÛn de pobreza, vulnerabilidad y no vulnerabilidad que reciben programas sociales",
+  labs(title = "¬øPrimero los pobres? Porcentaje de personas en situaci√≥n de pobreza, vulnerabilidad y no vulnerabilidad que reciben programas sociales",
        subtitle = "Colima, 2018-2020",
        x = "Cuadrante de bienestar y derechos sociales",
        y = "Porcentaje de personas que reciben programa sociales",
        caption = "Fuentes: ENIGH 2018 y 2020, INEGI. Estimaciones de pobreza multidimensional 2018 y 2020, Coneval.
-       Nota: La precisiÛn de las estimaciones para los cuadrantes pobres, vulnerables por carencias y no pobres y no vulnerables es alta. Para los cuadrantes vulnerables por ingresos es moderada.
+       Nota: La precisi√≥n de las estimaciones para los cuadrantes pobres, vulnerables por carencias y no pobres y no vulnerables es alta. Para los cuadrantes vulnerables por ingresos es moderada.
        Elaborado por @jkvisfocri"
   )
 
-## VisualizaciÛn la transferencia media hacia beneficiarios de programas sociales acorde a los cuadrantes de bienestar.
+## Visualizaci√≥n del porcentaje de beneficiarios que reciben programas sociales de acuerdo a los cuadrantes de bienestar
+pct_beneficiarios_cuadrantes %>% 
+  mutate(cuadrantes = as.factor(cuadrantes)) %>% 
+  mutate(cuadrantes = fct_relevel(cuadrantes,
+                                  "no pobre y no vulnerable",
+                                  "vulnerables por ingresos",
+                                  "vulnerables por carencias",
+                                  "pobres"
+                                  )
+  ) %>% 
+  mutate(a√±o = as.factor(a√±o)) %>% 
+  mutate(a√±o = fct_relevel(a√±o,
+                           rev)) %>% 
+  ggplot(aes(x = as.factor(a√±o),
+             y = pct_bene,
+             fill = cuadrantes
+  )
+  ) +
+  theme_bw()+
+  theme(text = element_text(size=15), ## Ajustamos la letra del texto a 11 puntos
+        plot.title = element_text(hjust = 0.5), ## Alineamos el t√≠tulo al centro
+        axis.title.x =  element_blank()
+  ) + 
+  geom_bar(stat="identity",
+           width = .7,
+           colour="black",
+           lwd=0.1) +
+  scale_fill_tableau(palette = "Classic Green-Orange 12",
+                     breaks=c("pobres",
+                           "vulnerables por carencias",
+                           "vulnerables por ingresos",
+                           "no pobre y no vulnerable"
+                           )
+                       )+
+  coord_flip()+
+  labs(title = "¬øPrimero los pobres? Porcentaje de beneficiarios en situaci√≥n de pobreza, vulnerabilidad o no pobreza ni vulnerabilidad",
+       subtitle = "Colima, 2018-2020",
+       x = "a√±o",
+       y = "Porcentaje de beneficiarios de programas sociales",
+       caption = "Fuentes: ENIGH 2018 y 2020, INEGI. Estimaciones de pobreza multidimensional 2018 y 2020, Coneval.
+       Nota: La precisi√≥n de las estimaciones para los cuadrantes pobres, vulnerables por carencias y no pobres y no vulnerables es alta. Para los cuadrantes vulnerables por ingresos es moderada.
+       Elaborado por @jkvisfocri"
+  )
+
+
+## Visualizaci√≥n la transferencia media hacia beneficiarios de programas sociales acorde a los cuadrantes de bienestar.
 mean_trasfer %>% 
   mutate(cuadrantes_clave = as.factor(c(1,2,3,4,
                                         1,2,3,4)
@@ -531,12 +633,12 @@ mean_trasfer %>%
   ) %>% 
   ggplot(aes(x = cuadrantes_clave,
              y = transferencia_media,
-             fill = as.factor(aÒo)
+             fill = as.factor(a√±o)
   )
   ) +
   theme_bw()+
   theme(text = element_text(size=15), ## Ajustamos la letra del texto a 11 puntos
-        plot.title = element_text(hjust = 0.5), ## Alineamos el tÌtulo al centro
+        plot.title = element_text(hjust = 0.5), ## Alineamos el t√≠tulo al centro
         legend.position = c(0.8,
                             0.83),
         axis.title.x =  element_blank()
@@ -544,19 +646,19 @@ mean_trasfer %>%
   geom_bar(stat = "identity",
            position=position_dodge()
   ) +
-  scale_fill_brewer(name = "AÒo",
+  scale_fill_brewer(name = "A√±o",
                     palette="Paired")+
   scale_x_discrete(breaks = c(1:4),
                    labels = c("Pobres",
                               "Vulnerables por carencias",
                               "Vulnerables por ingresos",
                               "No pobres y no vulnerables"))+
-  labs(title = "øPrimero los pobres? Transferencia media de programas sociales a los beneficiarios de los cuadrantes pobres, vulnerables y no vulnerables",
+  labs(title = "¬øPrimero los pobres? Transferencia media de programas sociales a los beneficiarios de los cuadrantes pobres, vulnerables y no vulnerables",
        subtitle = "Colima, 2018-2020",
        x = "Cuadrante de bienestar y derechos sociales",
        y = "Transferencia media",
        caption = "Fuentes: ENIGH 2018 y 2020, INEGI. Estimaciones de pobreza multidimensional 2018 y 2020, Coneval.
-       Nota 1: La precisiÛn de las estimaciones para el cuadrante no vulnerable 2018 es moderada. Para el resto de los cuadrantes y aÒos, la precisiÛn de las estimaciones es alta.
-       Nota 2: La transferencia promedio 2018 es reportada con precios actualizados a julio de 2020, para facilitar la comparaciÛn.
+       Nota 1: La precisi√≥n de las estimaciones para el cuadrante no vulnerable 2018 es moderada. Para el resto de los cuadrantes y a√±os, la precisi√≥n de las estimaciones es alta.
+       Nota 2: La transferencia promedio 2018 es reportada con precios actualizados a julio de 2020, para facilitar la comparaci√≥n.
        Elaborado por @jkvisfocri"
   )
