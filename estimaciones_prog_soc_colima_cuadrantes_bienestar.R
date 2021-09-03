@@ -607,7 +607,11 @@ pct_beneficiarios_cuadrantes %>%
            width = .7,
            colour="black",
            lwd=0.1) +
-  scale_fill_tableau(palette = "Classic Green-Orange 12",
+  scale_fill_manual(values = c(
+                          "#c92020", ## Pobres
+                          "#d49330", ## Vulnerables por carencias
+                          "#cc810f", ## Vulnerables por ingresos
+                          "#309f32"), ## No pobres y no vulnerables
                      breaks=c("pobres",
                            "vulnerables por carencias",
                            "vulnerables por ingresos",
