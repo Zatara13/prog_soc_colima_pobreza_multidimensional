@@ -601,9 +601,7 @@ pct_beneficiarios_cuadrantes %>%
   theme_bw()+
   theme(text = element_text(size=15), ## Ajustamos la letra del texto a 11 puntos
         plot.title = element_text(hjust = 0.5), ## Alineamos el título al centro
-        axis.title.x =  element_blank(),
-        legend.position="bottom",
-        legend.box = "horizontal"
+        axis.title.x =  element_blank()
   ) + 
   geom_bar(stat="identity",
            width = .7,
